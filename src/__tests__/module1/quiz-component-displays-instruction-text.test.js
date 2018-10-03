@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../../App';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
+import App from '../../App';
 
 let quizComponentExists = false;
 let Quiz;
@@ -22,28 +22,28 @@ try {
   quizQuestionComponentExists = false;
 }
 
-let fs = require('fs');
-let quizData = require('../../quiz_data.json')
+const fs = require('fs');
+const quizData = require('../../quiz_data.json');
 
 describe('Quiz Component', () => {
   it('displays the instruction text from JSON data @quiz-component-displays-instruction-text', () => {
-    assert(quizComponentExists, "The Quiz component hasn't been created yet.")
+    assert(quizComponentExists, "The Quiz component hasn't been created yet.");
 
     let quiz;
     try {
-      quiz = shallow(<Quiz />)
+      quiz = shallow(<Quiz />);
     } catch (e) {
-      assert(false, "We weren't able to mount the Quiz component.")      
+      assert(false, "We weren't able to mount the Quiz component.");
     }
 
     if (quiz.find('.QuizQuestion').length > 0) {
-      assert(quiz.find('.QuizQuestion').text() == quizData.quiz_questions[0].instruction_text, "The div with a className of `QuizQuestion` isn't displaying the correct instruction text.")
+      assert(quiz.find('.QuizQuestion').text() == quizData.quiz_questions[0].instruction_text, "The div with a className of `QuizQuestion` isn't displaying the correct instruction text.");
     } else if (quizQuestionComponentExists) {
       if (quiz.containsMatchingElement(<QuizQuestion />)) {
         // this block will run after @quiz-question-component-has-render-method in module 2
       }
     } else {
-      assert(false, "There is not a div with a className of QuizQuestion yet.")
+      assert(false, 'There is not a div with a className of QuizQuestion yet.');
     }
-  })
-})
+  });
+});

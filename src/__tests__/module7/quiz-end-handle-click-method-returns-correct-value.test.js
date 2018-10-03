@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../../App';
 import { shallow, mount } from 'enzyme';
 import { assert } from 'chai';
 import sinon from 'sinon';
+import App from '../../App';
 
 let quizComponentExists = false;
 let Quiz;
@@ -25,46 +25,46 @@ try {
 
 describe('QuizEnd Component', () => {
   it('handleResetClick method called resetClickHandler @quiz-end-handle-click-method-returns-correct-value', () => {
-    assert(quizComponentExists, "The Quiz component hasn't been created yet.")
-    assert(quizEndComponentExists, "The QuizEnd component hasn't been created yet.")
+    assert(quizComponentExists, "The Quiz component hasn't been created yet.");
+    assert(quizEndComponentExists, "The QuizEnd component hasn't been created yet.");
 
-    let quiz
+    let quiz;
     try {
-      quiz = shallow(<Quiz />)
+      quiz = shallow(<Quiz />);
     } catch (e) {
-      assert(false, "We weren't able to mount the Quiz component.")
+      assert(false, "We weren't able to mount the Quiz component.");
     }
 
-    let quiz_spy
+    let quiz_spy;
     try {
-      quiz_spy = sinon.spy(Quiz.prototype, 'handleResetClick')
+      quiz_spy = sinon.spy(Quiz.prototype, 'handleResetClick');
     } catch (e) {
-      assert(false, "There's not a method named `handleResetClick()` in the Quiz class.")
+      assert(false, "There's not a method named `handleResetClick()` in the Quiz class.");
     }
 
-    let quiz_end_spy
+    let quiz_end_spy;
     try {
-      quiz_end_spy = sinon.spy(QuizEnd.prototype, 'handleResetClick')
+      quiz_end_spy = sinon.spy(QuizEnd.prototype, 'handleResetClick');
     } catch (e) {
-      assert(false, "There's not a method named `handleResetClick()` in the QuizEnd class.")
+      assert(false, "There's not a method named `handleResetClick()` in the QuizEnd class.");
     }
 
-    let mockedPropHandler = sinon.spy()
+    const mockedPropHandler = sinon.spy();
 
-    let mock_prop = {
-      instruction_text: "How many continents are there on Planet Earth?",
-      answer_options: ["5", "6", "7", "8"],
-      answer: "5"
-    }
+    const mock_prop = {
+      instruction_text: 'How many continents are there on Planet Earth?',
+      answer_options: ['5', '6', '7', '8'],
+      answer: '5',
+    };
 
-    let quizEnd
+    let quizEnd;
     try {
-      quizEnd = shallow(<QuizEnd resetClickHandler={mockedPropHandler} />)
+      quizEnd = shallow(<QuizEnd resetClickHandler={mockedPropHandler} />);
     } catch (e) {
-      assert(false, "We weren't able to mount the QuizEnd component.")
+      assert(false, "We weren't able to mount the QuizEnd component.");
     }
 
-    quizEnd.find('a').simulate('click')
-    assert(mockedPropHandler.called, "QuizEnd's `handleResetClick()` method isn't making a call to `this.props.resetClickHandler()`.")
-  })
-})
+    quizEnd.find('a').simulate('click');
+    assert(mockedPropHandler.called, "QuizEnd's `handleResetClick()` method isn't making a call to `this.props.resetClickHandler()`.");
+  });
+});

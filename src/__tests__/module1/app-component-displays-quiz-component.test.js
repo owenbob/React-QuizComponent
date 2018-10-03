@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../../App';
 import { shallow, mount, render } from 'enzyme';
 import { assert } from 'chai';
+import App from '../../App';
 
 let quizComponentExists = false;
 let Quiz;
@@ -13,13 +13,13 @@ try {
   quizComponentExists = false;
 }
 
-let fs = require('fs');
+const fs = require('fs');
 
 describe('App Component', () => {
   it('renders Quiz component @app-component-displays-quiz-component', () => {
-    assert(quizComponentExists, "The Quiz component hasn't been created yet.")
+    assert(quizComponentExists, "The Quiz component hasn't been created yet.");
 
-    let app = mount(<App />)
-    assert(app.contains(<Quiz />), "The App component is not rendering the Quiz component.")
+    const app = mount(<App />);
+    assert(app.contains(<Quiz />), 'The App component is not rendering the Quiz component.');
   });
-})
+});
