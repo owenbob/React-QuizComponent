@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../../App';
 import { shallow } from 'enzyme';
 import { assert } from 'chai';
 import sinon from 'sinon';
+import App from '../../App';
 
 let quizEndComponentExists = false;
 let QuizEnd;
@@ -16,26 +16,25 @@ try {
 
 describe('QuizEnd Component', () => {
   it('has an anchor tag with an onClick handler @quiz-end-component-anchor-has-onclick-handler', () => {
-    assert(quizEndComponentExists, "The QuizEnd component hasn't been created yet.")
+    assert(quizEndComponentExists, "The QuizEnd component hasn't been created yet.");
 
-    let spy
+    let spy;
     try {
-      spy = sinon.spy(QuizEnd.prototype, 'handleResetClick')
+      spy = sinon.spy(QuizEnd.prototype, 'handleResetClick');
     } catch (e) {
-      assert(false, "There's not a method named `handleResetClick()` that's being called on anchor click in the QuizEnd class.")
+      assert(false, "There's not a method named `handleResetClick()` that's being called on anchor click in the QuizEnd class.");
     }
 
-    let mockedPropHandler = sinon.spy()
+    const mockedPropHandler = sinon.spy();
 
-    let quizEnd
+    let quizEnd;
     try {
-      quizEnd = shallow(<QuizEnd resetClickHandler={mockedPropHandler} />)
+      quizEnd = shallow(<QuizEnd resetClickHandler={mockedPropHandler} />);
     } catch (e) {
-      assert(false, "We weren't able to mount the QuizEnd component.")
+      assert(false, "We weren't able to mount the QuizEnd component.");
     }
 
-    quizEnd.find('a').simulate('click')
-    assert(spy.calledOnce, "There's not a method named `handleResetClick()` that's being called on the anchor click in the QuizEnd class.")
-
-  })
-})
+    quizEnd.find('a').simulate('click');
+    assert(spy.calledOnce, "There's not a method named `handleResetClick()` that's being called on the anchor click in the QuizEnd class.");
+  });
+});
