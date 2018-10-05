@@ -9,9 +9,12 @@ class QuizEnd extends Component {
   render() {
     return (
       <div>
+        <div class="card-header">
         <p>Thanks for playing!</p>
+        </div>
+        <button className="btn btn-outline-secondary">
         <a href="#" onClick={this.handleResetClick.bind(this)}>Reset Quiz</a>
-
+        </button>
       </div>
     );
   }

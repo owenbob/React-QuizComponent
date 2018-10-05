@@ -6,7 +6,11 @@ import Quiz from './Quiz';
 class App extends Component {
   render() {
     return (
-      <Quiz />
+      <div className="card">
+        <div class="card-body">
+          <Quiz />
+        </div>
+      </div>
     );
   }
 }
