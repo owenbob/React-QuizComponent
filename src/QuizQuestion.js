@@ -25,9 +25,11 @@ class QuizQuestion extends Component {
     const { quiz_question } = this.props;
     return (
       <main>
+        <div class="card-header">
         <section>
           <p>{quiz_question.instruction_text}</p>
         </section>
+        </div>
         <section className="buttons">
           <ul>
             <li>
@@ -35,7 +37,12 @@ class QuizQuestion extends Component {
             </li>
           </ul>
         </section>
-        {this.state.incorrectAnswer ? <p className="error">Sorry,that is not right</p> : null }
+        {this.state.incorrectAnswer ?
+        <div className="col-sm">
+          <div className="alert alert-danger"> 
+          <p className="error">Sorry,that is not right</p>
+          </div>
+        </div> : null }
       </main>
     );
   }

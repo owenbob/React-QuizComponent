@@ -9,7 +9,7 @@ class QuizQuestionButton extends Component {
     const { button_text } = this.props;
     return (
       <li>
-        <button onClick={this.handleClick.bind(this)}>
+        <button className="btn btn-secondary" onClick={this.handleClick.bind(this)}>
           {button_text}
         </button>
       </li>
